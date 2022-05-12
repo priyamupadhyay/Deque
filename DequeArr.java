@@ -17,7 +17,7 @@ public class DequeArr < Item > implements Iterable < Item > {
         public boolean isEmpty() {
             return n == 0;
         }
-
+        
         public int size() {
             return n;
         }
