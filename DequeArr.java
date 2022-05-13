@@ -52,11 +52,29 @@ public class DequeArr < Item > implements Iterable < Item > {
         }
 
         public Item removeFirst() {
-           
+            if (isEmpty()) throw new NoSuchElementException("Queue underflow");
+            Item item = q[first];
+            q[first] = null; // to avoid loitering
+            n--;
+            first++;
+            last--;
+            if (first == q.length) first = 0; // wrap-around
+            // shrink size of array if necessary
+            if (n > 0 && n == q.length / 4) resize(q.length / 2);
+            return item;
         }
 
         public Item removeLast() {
-            
+            if (isEmpty()) throw new NoSuchElementException("Queue underflow");
+            Item item = q[last];
+            while (item == null) {
+                item = q[last--];
+            }
+            n--;
+            //last--;
+            // shrink size of array if necessary
+            if (n > 0 && n == q.length / 4) resize(q.length / 2);
+            return item;
         }
 
         public Iterator < Item > iterator() {
