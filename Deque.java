@@ -27,12 +27,20 @@ public class Deque<Item> implements Iterable<Item> {
 
     // return the number of items on the deque
     public int size(){
-    
+        return n;
     }
 
     // add the item to the front
     public void addFirst(Item item){
-
+        if (item == null) throw new IllegalArgumentException();
+        Node old = first;
+        first = new Node();
+        first.data= item;
+        first.next = old;
+        n=n+1;
+        if (last == null){
+            last = first;
+        }
     }
 
     // add the item to the back
@@ -62,6 +70,9 @@ public class Deque<Item> implements Iterable<Item> {
     // unit testing (required)
     public static void main(String[] args){
         Deque Deque1 = new Deque();
+        System.out.println(Deque1.isEmpty());
+        Deque1.addFirst("Priyam");
+        Deque1.addFirst("Upadhyay");
 
 }
 
