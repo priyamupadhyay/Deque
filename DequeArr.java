@@ -24,7 +24,14 @@ public class DequeArr < Item > implements Iterable < Item > {
 
         // resize the underlying array
         private void resize(int capacity) {
-            
+            assert capacity >= n;
+            Item[] copy = (Item[]) new Object[capacity];
+            for (int i = 0; i < n; i++) {
+                copy[i] = q[(first + i) % q.length];
+            }
+            q = copy;
+            first = 0;
+            last = n;
         }
 
         public void addFirst(Item item) {
