@@ -1,9 +1,18 @@
 import java.util.*;
 public class DequeArr < Item > implements Iterable < Item > {
+    private static final int INIT_CAPACITY = 8;
 
-        public DequeArr() {
-        
-        }
+    private Item[] q; // queue elements
+    private int n; // number of elements on queue
+    private int first; // index of first element of queue
+    private int last; // index of next available slot
+
+    public DequeArr() {
+        q = (Item[]) new Object[INIT_CAPACITY];
+        n = 0;
+        first = 0;
+        last = 0;
+    }
 
         public boolean isEmpty() {
             
