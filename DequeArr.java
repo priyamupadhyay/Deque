@@ -1,26 +1,26 @@
 import java.util.*;
 public class DequeArr < Item > implements Iterable < Item > {
-        private static final int INIT_CAPACITY = 8;
+    private static final int INIT_CAPACITY = 8;
 
-        private Item[] q; // queue elements
-        private int n; // number of elements on queue
-        private int first; // index of first element of queue
-        private int last; // index of next available slot
+    private Item[] q; // queue elements
+    private int n; // number of elements on queue
+    private int first; // index of first element of queue
+    private int last; // index of next available slot
 
-        public DequeArr() {
-            q = (Item[]) new Object[INIT_CAPACITY];
-            n = 0;
-            first = 0;
-            last = 0;
-        }
+    public DequeArr() {
+        q = (Item[]) new Object[INIT_CAPACITY];
+        n = 0;
+        first = 0;
+        last = 0;
+    }
 
-        public boolean isEmpty() {
-            return n == 0;
-        }
-        
-        public int size() {
-            return n;
-        }
+    public boolean isEmpty() {
+        return n == 0;
+    }
+    
+    public int size() {
+        return n;
+    }
 
         // resize the underlying array
         private void resize(int capacity) {
@@ -33,7 +33,6 @@ public class DequeArr < Item > implements Iterable < Item > {
             first = 0;
             last = n;
         }
-
         public void addFirst(Item item) {
             if (n == q.length) resize(2 * q.length); // double size of array if necessary
             //Memory usage is higher and Time Complexity is in o(N)
@@ -83,36 +82,10 @@ public class DequeArr < Item > implements Iterable < Item > {
         }
 
         private class ArrayIterator implements Iterator < Item > {
-            private int i = 0;
-            public boolean hasNext() {
-                return i < n;
-            }
-            public void remove() {
-                throw new UnsupportedOperationException();
-            }
-            public Item next() {
-                if (!hasNext()) throw new NoSuchElementException();
-                Item item = q[(i + first) % q.length];
-                i++;
-                return item;
+            
             }
         }
         public static void main(String[] args) {
-            DequeArr Deque1 = new DequeArr();
-            Deque1.addFirst("PKU");
-            Deque1.addLast("PKU1");
-            Deque1.addFirst("PKU2");
-            Deque1.addLast("PKU3");
-            Deque1.addFirst("PKU4");
-            Deque1.addLast("PKU5");
-
-            System.out.println(Deque1.size());
-            System.out.println(Deque1.removeFirst());
-            System.out.println(Deque1.removeLast());
-            System.out.println(Deque1.removeFirst());
-            System.out.println(Deque1.removeLast());
-            System.out.println(Deque1.removeFirst());
-            System.out.println(Deque1.removeLast());
-            System.out.print(Deque1.size());
+            
         }
     }
