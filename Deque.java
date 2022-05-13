@@ -1,10 +1,17 @@
 import java.util.*;
 
 public class Deque<Item> implements Iterable<Item> {
-
+    public Node first,last;
+    private int n;
+    private class Node{
+        Item data;
+        Node next;
+    }
     // construct an empty deque
     public Deque(){
-    
+        first=null;
+        last=null;
+        n=0;
     }
 
     // is the deque empty?
@@ -14,7 +21,7 @@ public class Deque<Item> implements Iterable<Item> {
 
     // return the number of items on the deque
     public int size(){
-        return n;
+    
     }
 
     // add the item to the front
