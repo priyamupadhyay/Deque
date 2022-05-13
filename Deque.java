@@ -7,6 +7,7 @@ public class Deque<Item> implements Iterable<Item> {
         Item data;
         Node next;
     }
+
     // construct an empty deque
     public Deque(){
         first=null;
@@ -23,6 +24,7 @@ public class Deque<Item> implements Iterable<Item> {
             return true;
         
         }
+        
     }
 
     // return the number of items on the deque
@@ -97,7 +99,18 @@ public class Deque<Item> implements Iterable<Item> {
         return new hasIterator();
     }
     public class hasIterator implements Iterator<Item>{
-        
+        Node temp = first;
+        public boolean hasNext(){ 
+            return temp != null; 
+        }
+        public Item next() {
+            if (!hasNext()) throw new NoSuchElementException();
+            Item item1 = temp.data;
+            temp = temp.next;
+            return item1;
+        }
+        public void remove() {
+            throw new UnsupportedOperationException(); } 
     }
 
 
@@ -107,6 +120,14 @@ public class Deque<Item> implements Iterable<Item> {
         System.out.println(Deque1.isEmpty());
         Deque1.addFirst("Priyam");
         Deque1.addFirst("Upadhyay");
+        Deque1.addLast("Student");
+        System.out.println(Deque1.isEmpty());
+        System.out.println(Deque1.size());
+        System.out.println(Deque1.removeLast());
+        System.out.println(Deque1.size());
+        System.out.println(Deque1.removeFirst());
+        System.out.println(Deque1.isEmpty());
+
 
 }
 
