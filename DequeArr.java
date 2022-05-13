@@ -14,13 +14,13 @@ public class DequeArr < Item > implements Iterable < Item > {
         last = 0;
     }
 
-        public boolean isEmpty() {
-            
-        }
-        
-        public int size() {
-            
-        }
+    public boolean isEmpty() {
+        return n == 0;
+    }
+    
+    public int size() {
+        return n;
+    }
 
         // resize the underlying array
         private void resize(int capacity) {
