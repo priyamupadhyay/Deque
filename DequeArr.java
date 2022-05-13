@@ -82,10 +82,36 @@ public class DequeArr < Item > implements Iterable < Item > {
         }
 
         private class ArrayIterator implements Iterator < Item > {
-            
+            private int i = 0;
+            public boolean hasNext() {
+                return i < n;
+            }
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+            public Item next() {
+                if (!hasNext()) throw new NoSuchElementException();
+                Item item = q[(i + first) % q.length];
+                i++;
+                return item;
             }
         }
         public static void main(String[] args) {
-            
+            DequeArr Deque1 = new DequeArr();
+            Deque1.addFirst("PKU");
+            Deque1.addLast("PKU1");
+            Deque1.addFirst("PKU2");
+            Deque1.addLast("PKU3");
+            Deque1.addFirst("PKU4");
+            Deque1.addLast("PKU5");
+
+            System.out.println(Deque1.size());
+            System.out.println(Deque1.removeFirst());
+            System.out.println(Deque1.removeLast());
+            System.out.println(Deque1.removeFirst());
+            System.out.println(Deque1.removeLast());
+            System.out.println(Deque1.removeFirst());
+            System.out.println(Deque1.removeLast());
+            System.out.print(Deque1.size());
         }
     }
