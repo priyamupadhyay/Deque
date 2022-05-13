@@ -33,13 +33,22 @@ public class DequeArr < Item > implements Iterable < Item > {
             first = 0;
             last = n;
         }
-
         public void addFirst(Item item) {
-           
+            if (n == q.length) resize(2 * q.length); // double size of array if necessary
+            //Memory usage is higher and Time Complexity is in o(N)
+            for (int i = n; i > 0; i--) {
+                q[i] = q[i - 1];
+            }
+            q[0] = item;
+            last++;
+            n++;
         }
 
         public void addLast(Item item) {
-            
+            if (n == q.length) resize(2 * q.length); // double size of array if necessary
+            q[last++] = item; // add item
+            if (last == q.length) last = 0; // wrap-around
+            n++;
         }
 
         public Item removeFirst() {
